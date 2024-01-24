@@ -14,11 +14,23 @@ function findGrape (arr) {
 The code above is an example of 'function declaration.' Please re-write the function in 'function expression' and 'arrow function' syntaxes. 
 */
 
-// RE-WRITE THE ABOVE FUNCTION IN 'FUNCTION EXPRESSION' SYNTAX HERE.
-
-
-
-// RE-WRITE THE ABOVE FUNCTION IN 'ARROW FUNCTION' SYNTAX HERE.
+const findgrape = function(arr) {
+    for(let i=0; i<arr.length; i++) {
+        if(arr[i].color === `purple`) {
+            return console.log(`The fruit with index ${arr.indexOf(arr[i])} is a grape`)
+        }
+    }
+}
+  
+  
+  
+  const FindGrape = (arr) => {
+    for(let i=0; i<arr.length; i++) {
+         if(arr[i].color === `purple`) {
+         return console.log(`The fruit with index ${arr.indexOf(arr[i])} is a grape`)
+        }
+    }
+}
 
 
 
@@ -27,10 +39,10 @@ The code above is an example of 'function declaration.' Please re-write the func
 Write a one line function (give a name of your choice) with an implicit return that when the function is invoked, it will print: 'The first parameter is [parameter1]. The second parameter is [parameter2]'.
 */
 
-// CODE HERE
+const calculate = (parameter1,parameter2) => {console.log(`The first parameter is ${parameter1}. The second parameter is ${parameter2}.`)}
 
 
-// INVOKE THE FUNCTION HERE. THE PARAMETERS TAKE ANY DATATYPE.
+console.log(calculate('Apple','Orange'));
 
 
 ////////// PROBLEM 3 //////////
@@ -39,10 +51,14 @@ Write a function called 'greeting' that takes 3 parameters: firstName, lastName,
 Then, outside of the greeting function, invoke the greeting function, passing in the value firstName and lastName of your choice, and a callback function that takes a parameter of fullName. The callback function will print 'Hello, my full name is [fullName]'. 
 */
 
-// CODE 'GREETING FUNCTION' HERE
+const greeting = (firstName, lastName, callback) => {
+    callback (`${firstName} ${lastName}`);
+}
+  
+const fullNameCallback = (fullName) => console.log(`Hello, my full name is ${fullName}`);
 
 
-// INVOKE 'GREETING FUNCTION' HERE
+greeting('Kody', 'Wells', fullNameCallback);
 
 
 ////////// PROBLEM 4 //////////
@@ -57,14 +73,21 @@ let totalCost = []
 Write a function called 'pricesPlusTax' that takes 2 params: an array ('prices' array) and a callback function. Inside the function, loop over the 'prices' array. For every iteration, calculate a new total cost (original price plus 20% tax), then push it to the 'totalCost' array. After the loop, invoke the callback function, passing in the 'totalCost' array.
 */
 
-// CODE HERE
+const pricesPlusTax = (prices, callback) => {
+    for (let i = 0; i<prices.length; i++) {
+      let total =  prices[i] * 1.2;
+      totalCost.push(total);
+    }
+    callback(totalCost);
+  }
+const printTotalCost = (totalCostArray) => console.log(`Total costs with tax:`, totalCostArray);
 
 
 /* 
 Invoke the 'pricesPlusTax' function, passing in the 'prices' array and a callback function (passing in 'totalCost' as a param) that will print "The new array plus tax = [totalCost]"
 */
 
-// CODE HERE
+pricesPlusTax(prices,printTotalCost);
 
 
 ////////// PROBLEM 5 //////////
@@ -77,14 +100,22 @@ Create a function called 'multiplyingFactory' that takes a number as a param. Th
 The inner function should run this logic: if the first number passing in is greater than and equal to 5, print the multiplication of the first and second numbers. If not, print "Cannot multiply: the first number is smaller than 5." 
 */
 
-// CODE HERE
+const multiplyingFactory = (number) => (number2) => {
+    if(number >= 5) {
+      console.log(number * number2);
+    } else {
+      console.log("Cannot multiply: the first number is smaller than 5.");
+  }
+}
+
 
 
 /* 
 Let's invoke the 'multiplyingFactory' function that will return another function, and save it into a variable called 'timesFour.' Let's pass in number 3 as a param.
 */
 
-// CODE HERE
+let timesFour = multiplyingFactory(5);
+
 
 
 /* 
@@ -95,7 +126,7 @@ Let's invoke 'timesFour' and pass in number 4 as a param. Number 4 here is the s
 Run the code in node to see the printed result. You should see "Cannot multiply: the first number is smaller than 5."
 */
 
-// INVOKE 'timesFour' HERE
+timesFour(4);
 
 
 /* 
