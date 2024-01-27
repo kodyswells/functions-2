@@ -5,16 +5,19 @@
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-// CODE HERE
+const multiply = (number1,number2,callback) => {
+  const product = number1 * number2;
+  callback(product);
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) //should console.log 12
+})
 
 
 
@@ -35,7 +38,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// CODE HERE 
+const first = (arr,callback) => {
+  const names = arr[0];
+  callback(names);
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -55,7 +61,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-// CODE HERE
+const last = (arr,callback) => {
+  const lastNames = arr[arr.length-1];
+  callback(lastNames);
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -77,7 +86,13 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-// CODE HERE 
+const contains = (arr,name,callback) => {
+  if (arr.includes(name)) {
+    callback(true);
+  } else {
+    callback(false);
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -102,7 +117,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Hint: you can use a nested for loop to do this.
 */
 
-// CODE HERE
+const uniq = (array,callback) => {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+        if (array[i] === array[j]) {
+            array.splice(j, 1);
+            j--;
+        }
+    }
+}
+callback(array);
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -111,7 +136,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   'The new names array with all the duplicate items removed is [UNIQARRPARAM].'
 */
 
-// CODE HERE
+const printUniqueArray = (uniqArr) => {
+  console.log(`The new names array with all the duplicate items removed is ${JSON.stringify(uniqArr)}.`);
+}
+
+uniq(names, printUniqueArray);
 
 
 
@@ -122,8 +151,13 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-// CODE HERE 
+const each = (arr,callback) => {
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i],i)
+  }
 
+}
+const names = ['Kody','Kierstin','Angelga','Ryan'];
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -132,7 +166,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   'The item at index [INDEXPARAM] is [ITEMPARAM].'
 */
 
-// CODE HERE
+each(names, (item, index) => {
+  console.log(`The item at index${index} is ${item}.`)
+})
 
 
 
